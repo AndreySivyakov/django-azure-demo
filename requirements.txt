@@ -1,6 +1,7 @@
 django>=2.1.15
 django-crispy-forms
-django-pyodbc-azure
-Bootstrap>=4
-jquery>=1.7.1
-django-bootstrap-datepicker-plus
+#pyodbc>=3
+#django-pyodbc-azure
+#Bootstrap>=4
+#jquery>=1.7.1
+#django-bootstrap-datepicker-plus
