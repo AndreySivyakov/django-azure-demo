@@ -25,7 +25,7 @@ SECRET_KEY = ')80z^3j2ugd-ci5oq@buy(-+@!a2&-#(y@e2lp51zktn2oov3@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -44,8 +44,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     "bootstrap4",
     "bootstrap_datepicker_plus",
-    'widget_tweaks',
-    'django_select2',
+    #'widget_tweaks',
+    #'django_select2',
 ]
 
 MIDDLEWARE = [

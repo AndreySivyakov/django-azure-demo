@@ -1,0 +1,5 @@
+django>=2.1.15
+django-crispy-forms
+django-pyodbc-azure
+bootstrap4
+bootstrap_datepicker_plus
