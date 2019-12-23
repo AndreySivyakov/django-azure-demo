@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'myproject2.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
-        'NAME': 'scmaandb',
+        'NAME': 'SCMAandBdb',
         'USER': 'SCMteam',
         'PASSWORD': 'SpendReport2019',
         'HOST': 'scmanalytics.database.windows.net',
