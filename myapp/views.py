@@ -5,7 +5,7 @@ from .models import *
 from .filters import ClaimFilter, VendorFilter
 import json
 import datetime
-from dal import autocomplete as autocomplete
+#from dal import autocomplete as autocomplete
 from django.forms.models import model_to_dict
 
 def home(request):
