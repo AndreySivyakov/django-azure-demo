@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+{% load crispy_forms_tags %}
+{% load bootstrap4 %}
+{% bootstrap_javascript jquery='full' %}
+{{ form_claim.media }}
+{{ form_vendor.media }}
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+      #div_id_resolution {display: none;}
+      #div_id_close_date {display: none;}
+      #div_id_form-1-vendor_number {display: none;}
+      #div_id_form-1-vendor_name {display: none;}
+      #div_id_form-2-vendor_number {display: none;}
+      #div_id_form-2-vendor_name {display: none;}
+      #div_id_form-3-vendor_number {display: none;}
+      #div_id_form-3-vendor_name {display: none;}
+      #div_id_form-4-vendor_number {display: none;}
+      #div_id_form-4-vendor_name {display: none;}
+      div.relative{
+        position: relative;
+        left: 452px;
+        bottom: 32px;
+      }
+      .btn-group-xs > .btn, .btn-xs {
+        padding: .30rem .4rem;
+        font-size: .800rem;
+        line-height: .7;
+        border-radius: .2rem;
+      }
+    </style>
+    <script type="text/javascript">
+
+      function GetDjangoVar () {
+        record = '{{ record|safe }}';
+        rec_parsed = JSON.parse(record);
+        record_vendors = '{{ record_vendors|safe }}';
+        rec_vendors_parsed = JSON.parse(record_vendors);
+        var num_of_vendors = rec_vendors_parsed.length;
+        listVendors(num_of_vendors, rec_vendors_parsed);
+        var parts_open_date = rec_parsed.open_date.substring(0, 10).split('-');
+        var mydate_open = parts_open_date[1]+"/"+parts_open_date[2]+"/"+parts_open_date[0];
+        if (rec_parsed.status=="Closed") {
+          var parts_close_date = rec_parsed.close_date.substring(0, 10).split('-');
+          var mydate_close = parts_close_date[1]+"/"+parts_close_date[2]+"/"+parts_close_date[0];
+          document.getElementById('id_close_date').value = mydate_close;
+          document.getElementById('id_resolution').value = rec_parsed.resolution;
+        }
+
+      function listVendors(count, parsed_vendors) {
+        for (i = 0; i < count; i++) {
+          var VenNum_box_id = "id_form-"+i+"-vendor_number";
+          document.getElementById(VenNum_box_id).value = rec_vendors_parsed[i].vendor_number;
+          var div_VenNum_id = "div_id_form-"+i+"-vendor_number";
+          document.getElementById(div_VenNum_id).style.display = "block";
+          var VenName_box_id = "id_form-"+i+"-vendor_name";
+          document.getElementById(VenName_box_id).value = rec_vendors_parsed[i].vendor_name;
+          var div_VenName_id = "div_id_form-"+i+"-vendor_name"
+          document.getElementById(div_VenName_id).style.display = "block";
+        }
+      }
+      //var i;
+        //var ven_count = len(record_vendors);
+        //alert(rec_vendors_parsed);
+        //for (i = 0; i < 5; i++) {
+          //text += cars[i] + "<br>";
+        //}
+        document.getElementById('id_open_date').value = mydate_open;
+        document.getElementById('id_claim_type').value = rec_parsed.claim_type;
+        document.getElementById('id_responsible_rep').value = rec_parsed.responsible_rep;
+        document.getElementById('id_original_value').value = rec_parsed.original_value;
+        document.getElementById('id_estimated_value').value = rec_parsed.estimated_value;
+        document.getElementById('id_po').value = rec_parsed.po;
+        document.getElementById('id_contract').value = rec_parsed.contract;
+        document.getElementById('id_bus_unit').value = rec_parsed.bus_unit;
+        document.getElementById('id_status').value = rec_parsed.status;
+        document.getElementById('id_nature').value = rec_parsed.nature;
+        document.getElementById('id_initiated_by').value = rec_parsed.initiated_by;
+        document.getElementById('id_projects').value = rec_parsed.projects;
+        document.getElementById('id_description').value = rec_parsed.description;
+
+      }
+
+      var VenID;
+      $.when( $.ready ).then(function() {
+        $('label[for="id_form-1-vendor_number"]').hide ();
+        $('label[for="id_form-1-vendor_name"]').hide ();
+        $('label[for="id_form-2-vendor_number"]').hide ();
+        $('label[for="id_form-2-vendor_name"]').hide ();
+        $('label[for="id_form-3-vendor_number"]').hide ();
+        $('label[for="id_form-3-vendor_name"]').hide ();
+        $('label[for="id_form-4-vendor_number"]').hide ();
+        $('label[for="id_form-4-vendor_name"]').hide ();
+        $('label[for="id_form-5-vendor_number"]').hide ();
+        $('label[for="id_form-5-vendor_name"]').hide ();
+        VenID = 0;
+
+      });
+    </script>
+    <script>
+      function hideField() {
+        check = document.getElementsByName("status")[0].value;
+        response_resolution = document.getElementById("div_id_resolution");
+        response_closeDate = document.getElementById("div_id_close_date");
+        if (check === "Open") {
+    	     response_resolution.style.display = "none";
+           response_closeDate.style.display = "none";
+         }else if (check === '') {
+    	      response_resolution.style.display = "none";
+            response_closeDate.style.display = "none";
+          }else{
+            response_resolution.style.display = "block";
+            response_closeDate.style.display = "block";
+          }
+        }
+
+        function dateCheck() {
+          check = document.getElementsByName("status")[0].value;
+          open_date = document.getElementById("id_open_date").value;
+          close_date = document.getElementById("id_close_date").value;
+          if (open_date > close_date && check==='Closed') {
+            alert("Close Date can't be greater then Open Date");
+          }
+        }
+
+        function unhideVendor() {
+          if (VenID <4) {
+            VenID++;
+            var VenItemNum = "div_id_form-".concat(VenID,"-vendor_number");
+            var VenItemName = "div_id_form-".concat(VenID,"-vendor_name");
+            response_vendor_number = document.getElementById(VenItemNum);
+            response_vendor_name = document.getElementById(VenItemName);
+            response_vendor_number.style.display = "block";
+            response_vendor_name.style.display = "block";
+          }else{
+            alert("Only five vendors per claim are allowed");
+          }
+        }
+
+        function hideFieldANDGetDjangoVar() {
+          GetDjangoVar();
+          hideField();
+        }
+    </script>
+    <title></title>
+  </head>
+  <body onload="hideFieldANDGetDjangoVar()">
+    <div class="container">
+      {% block content %}
+        <form method="post">
+          {% csrf_token %}
+          <div class="form-row">
+            <div class="form-group col-md-3 mb-0">
+              {{ form_claim.open_date|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+              {{ form_claim.claim_type|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+                  {{ form_claim.original_value|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+              {{ form_claim.estimated_value|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+              {{ form_claim.contract|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+              {{ form_claim.po|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+              {{ form_claim.bus_unit|as_crispy_field }}
+            </div>
+            <div onchange="hideField()" class="form-group col-md-3 mb-0">
+              {{ form_claim.status|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+              {{ form_claim.nature|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+              {{ form_claim.initiated_by|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+              {{ form_claim.responsible_rep|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-3 mb-0">
+              {{ form_claim.projects|as_crispy_field }}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6 mb-0">
+
+              {{ form_vendor.management_form }}
+              <table>
+                {% for form in form_vendor %}
+                <div class="form-row">
+                  <div class="form-group col-md-3 mb-0">{{ form.vendor_number|as_crispy_field }}</div>
+                  <div class="form-group col-md-9 mb-0">{{ form.vendor_name|as_crispy_field }}</div>
+                </div>
+                {% endfor %}
+                <div class="w-75 p-3">
+                  <div class="relative"><button onclick=unhideVendor() id="add_vendor_button" type="button" class="btn btn-primary btn-xs">Add vendor</button></div>
+                </div>
+              </table>
+
+              {{ form_claim.resolution|as_crispy_field }}
+              {{ form_claim.close_date|as_crispy_field }}
+            </div>
+              <div class='form-group col-md-6 mb-0'>
+                {{ form_claim.description|as_crispy_field }}
+              </div>
+          </div>
+          <input onclick="dateCheck()" id='submit_button' class="btn btn-primary btn-lg" type="submit" name="action" value="Save"></input>
+        </form>
+      {% endblock %}
+    </div>
+  </body>
+</html>

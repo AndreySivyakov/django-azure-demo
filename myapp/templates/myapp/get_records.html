@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+{% load crispy_forms_tags %}
+{% load bootstrap4 %}
+{% bootstrap_javascript jquery='full' %}
+{{ form_claim.media }}
+{% load widget_tweaks %}
+
+<html lang="en">
+<head>
+  {{ form.media.css }}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <style media="screen">
+  div.custom{
+    position: relative;
+    left: 15px;
+    top: 50px;
+  }
+  p.ex1 {
+  margin-left: 40px;
+  }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+
+    function hideStatus() {
+      status_box = document.getElementById("div_id_status");
+      status_box.style.display = "none";
+      document.getElementById("id_status").value = "Open";
+    }
+
+    function getRecID() {
+      var elements = document.getElementById("form_chckBox").elements;
+      for (var i=0, element; element = elements[i++];) {
+        if (element.checked == true){
+          var RecID = document.getElementById("table_records").rows[i-1].cells[2].innerHTML;
+          //alert (RecID);
+        }
+      }
+      document.getElementById("hidField").value = RecID;
+    }
+
+    function onlyOne(checkbox) {
+      var checkboxes = document.getElementsByName('check')
+      checkboxes.forEach((item) => {
+        if (item !== checkbox) item.checked = false
+      })
+    }
+  </script>
+</head>
+<p class = "ex1">
+  <a href="http://127.0.0.1:8000/">Enter New Record</a>
+</p>
+  {% block content %}
+<body onload="hideStatus()">
+  <div class="container">
+        <form method="get">
+          {% csrf_token %}
+          <h4 style="margin-top: 0; margin-left: 15px">Filter</h4>
+          <div class="input-group col-md-6 mb-0">
+            {% render_field filter.form.responsible_rep class="form-control" placeholder="Responsible rep..."%}
+            <div class="input-group-append">
+              <button class="btn btn-secondary" type="submit">Search</button>
+            </div>
+          </div>
+          {{ filter.form.status|as_crispy_field }}
+        </form>
+      {% endblock %}
+  </div>
+  <div style="margin-top: 50px; margin-left: 25px">
+    <div class="container">
+      <form method="POST" id="form_chckBox">
+        {% csrf_token %}
+        <table class="table table-bordered" id="table_records">
+          <thead>
+            <tr>
+              <th>Responsible Rep</th>
+              <th>Status</th>
+              <th>Open Date</th>
+              <th>Projects</th>
+              <th>Select Record to Modify</th>
+            </tr>
+          </thead>
+          {% for claim in filter.qs %}
+          <tr>
+            <td>{{ claim.responsible_rep }}</td>
+            <td>{{ claim.status }}</td>
+            <td id="ClaimID" style="display:none;">{{ claim.id }}</td>
+            <td>{{ claim.open_date|date:"M d, Y" }}</td>
+            <td>{{ claim.projects }}</td>
+            <td><input type="checkbox" onclick="onlyOne(this)" name="check"></td>
+          </tr>
+          {% endfor %}
+        </table>
+      <input type="hidden" id="hidField" name="RecID"></input>
+      <input class="btn btn-primary" onclick="getRecID()" type="submit" name="action" value="Submit"></input>
+    </form>
+    </div>
+  </div>
+  {{ form.media.js }}
+</body>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script>
+      function getRecID() {
+        var elements = document.getElementById("form_chckBox").elements;
+        for (var i=0, element; element = elements[i++];) {
+          if (element.checked == true){
+            var RecID = document.getElementById("table_records").rows[i-1].cells[2].innerHTML;
+          }
+        }
+        document.getElementById("hidField").value = RecID;
+      }
+
+      function onlyOne(checkbox) {
+        var checkboxes = document.getElementsByName('check')
+        checkboxes.forEach((item) => {
+          if (item !== checkbox) item.checked = false
+        })
+      }
+    </script>
+    <title></title>
+  </head>
+  <body>
+    {% block content %}
+    <form method="get">
+        <div class="well">
+          <h4 style="margin-top: 0">Filter</h4>
+          <div class="row">
+            <div class="form-group col-sm-4 col-md-3">
+              {{ filter.form.responsible_rep.label.tag }}
+              {% render_field filter.form.responsible_rep class="form-control" %}
+            </div>
+            <div class="form-group col-sm-4 col-md-3">
+              {{ filter.form.status.label.tag }}
+              {% render_field filter.form.status class="form-control" %}
+            </div>
+        <button type="submit">Search</button>
+      </form>
+      <form method="POST" id="form_chckBox">
+        {% csrf_token %}
+        <table id="table_records">
+          <tr>
+            <th>Responsible Rep</th>
+            <th>Status</th>
+            <th style="display:none;">ID</th>
+            <th>Modify?</th>
+          </tr>
+          {% for claim in filter.qs %}
+          <tr>
+            <td>{{ claim.responsible_rep }}</td>
+            <td>{{ claim.status }}</td>
+            <td id="ClaimID" style="display:none;">{{ claim.id }}</td>
+            <td><input type="checkbox" onclick="onlyOne(this)" name="check"></td>
+          </tr>
+          {% endfor %}
+        </table>
+        <input type="hidden" id="hidField" name="RecID"></input>
+        <input class="btn btn-primary" onclick="getRecID()" type="submit"></input>
+      </div>
+        </div>
+      </div>
+    </form>
+  {% endblock %}
+  </body>
+</html>
