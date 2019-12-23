@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import widgets, formset_factory
 from bootstrap_datepicker_plus import DatePickerInput
-from .models import Claim, Vendor, Comment
+from .models import Claim, Vendor
 
 CLAIM_TYPE = [("",""),('Claim', 'Claim'),('Possible Claim','Possible Claim')]
 

@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     "bootstrap4",
     "bootstrap_datepicker_plus",
-    #'widget_tweaks',
+    'widget_tweaks',
     #'django_select2',
 ]
 
@@ -89,6 +89,20 @@ WSGI_APPLICATION = 'myproject2.wsgi.application'
 #    }
 #}
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'sql_server.pyodbc',
+        'NAME': 'scmaandb',
+        'USER': 'SCMteam',
+        'PASSWORD': 'SpendReport2019',
+        'HOST': 'scmanalytics.database.windows.net',
+        'PORT': '',
+
+        'OPTIONS': {
+            'driver': 'ODBC Driver 13 for SQL Server',
+        },
+    },
+}
 
 
 

@@ -25,7 +25,13 @@ class Vendor(models.Model):
     vendor_number = models.BigIntegerField(null=True, default=None)
     vendor_name = models.CharField(max_length=100, null=True, blank=True)
 
-class Comment(models.Model):
-    comment_claim_ref = models.ForeignKey(Claim, on_delete=models.CASCADE)
-    comment_date = models.DateTimeField(null=True)
-    content = models.TextField(null=True)
+    def __unicode__(self):
+       return self.name
+
+#class Comment(models.Model):
+    #comment_claim_ref = models.ForeignKey(Claim, on_delete=models.CASCADE, blank=True, null=True)
+    #comment_date = models.DateTimeField(null=True)
+    #content = models.TextField(null=True)
+
+    #def __unicode__(self):
+       #return self.name

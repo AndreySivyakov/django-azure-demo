@@ -6,11 +6,6 @@ from django import forms
 
 class ClaimFilter(django_filters.FilterSet):
     responsible_rep = django_filters.CharFilter(lookup_expr='icontains')
-    #responsible_rep = django_filters.ModelChoiceFilter(queryset = Claim.objects.values_list('responsible_rep', flat=True).distinct(),
-        #distinct=True,
-        #widget = Select2Widget)
-    #status = django_filters.ModelChoiceFilter(queryset = Claim.objects.values_list('status', flat=True).distinct(),
-    #    widget = forms.Select)
     class Meta:
         model = Claim
         fields = ['responsible_rep', 'status',]
