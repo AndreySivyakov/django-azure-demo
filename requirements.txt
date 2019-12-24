@@ -5,3 +5,4 @@ django-bootstrap4
 django-jquery
 django-bootstrap-datepicker-plus
 django-widget_tweaks
+django-filter
