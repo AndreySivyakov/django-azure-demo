@@ -107,7 +107,7 @@ WSGI_APPLICATION = 'myproject2.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'SCMAandBdb',
+        'NAME': 'scmaandbdb',
         'USER': 'AndreySivyakov@andreyazuretestdb',
         'PASSWORD': 'Woodbrook#150',
         'HOST': 'andreyazuretestdb.postgres.database.azure.com',
