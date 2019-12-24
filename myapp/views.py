@@ -1,4 +1,4 @@
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
 #from django.http import HttpResponse, JsonResponse
 from .forms import ClaimForm, VendorForm, mult_vendor
 from .models import *
