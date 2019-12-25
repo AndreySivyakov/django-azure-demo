@@ -8,8 +8,8 @@ import datetime
 #from dal import autocomplete as autocomplete
 from django.forms.models import model_to_dict
 
-def home(request):
-    return render(request, 'myapp/user_form2.html', {'form_claim':ClaimForm(),'form_vendor':mult_vendor()})
+def home_page(request):
+    return render(request, 'myapp/home_page.html')
 
 def blank_page(request):
     return render(request, 'myapp/coming_soon.html')
