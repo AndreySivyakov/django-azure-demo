@@ -89,31 +89,31 @@ WSGI_APPLICATION = 'myproject2.wsgi.application'
 #    }
 #}
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'sql_server.pyodbc',
-#        'NAME': 'SCMAandBdb',
-#        'USER': 'SCMteam',
-#        'PASSWORD': 'SpendReport2019',
-#        'HOST': 'scmanalytics.database.windows.net',
-#        'PORT': '',
-
-#        'OPTIONS': {
-#            'driver': 'ODBC Driver 13 for SQL Server',
-#        },
-#    },
-#}
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'scmaandbdb',
-        'USER': 'AndreySivyakov@andreyazuretestdb',
-        'PASSWORD': 'Woodbrook#150',
-        'HOST': 'andreyazuretestdb.postgres.database.azure.com',
-        'PORT': '5432',
-    }
+        'ENGINE': 'sql_server.pyodbc',
+        'NAME': 'SCMAandBdb',
+        'USER': 'SCMteam',
+        'PASSWORD': 'SpendReport2019',
+        'HOST': 'scmanalytics.database.windows.net',
+        'PORT': '',
+
+        'OPTIONS': {
+            'driver': 'ODBC Driver 13 for SQL Server',
+        },
+    },
 }
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'scmaandbdb',
+#        'USER': 'AndreySivyakov@andreyazuretestdb',
+#        'PASSWORD': 'Woodbrook#150',
+#        'HOST': 'andreyazuretestdb.postgres.database.azure.com',
+#        'PORT': '5432',
+#    }
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

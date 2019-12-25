@@ -11,6 +11,9 @@ from django.forms.models import model_to_dict
 def home(request):
     return render(request, 'myapp/user_form2.html', {'form_claim':ClaimForm(),'form_vendor':mult_vendor()})
 
+def blank_page(request):
+    return render(request, 'myapp/coming_soon.html')
+
 
 def user_form2(request):
 
@@ -20,7 +23,6 @@ def user_form2(request):
     if request.method == "POST":
         form_claim = ClaimForm(request.POST)
         form_vendor = mult_vendor(request.POST)
-
     if form_claim.is_valid() and form_vendor.is_valid():
         form_claim.save(commit=True)
         obj = form_claim.save()
@@ -69,7 +71,6 @@ def  post_record(request, record):
         )
 
 
-
 def view_records(request):
     form_claim = ClaimForm()
     form_vendor = mult_vendor()
@@ -77,20 +78,14 @@ def view_records(request):
     claim_filter = ClaimFilter(request.GET, queryset=claim_list)
 
     if request.method == 'POST':
-        if request.POST['action'] == 'Submit':
+        if request.POST['action'] == 'Get Record':
             global record_pk
             record_pk = request.POST['RecID']
-            print()
             try:
                 global record
                 record = Claim.objects.filter(pk=record_pk)
             except ValueError:
-                return render(request, 'myapp/modify_record.html',
-                    {'form_claim':form_claim,
-                    'record':record,
-                    'form_vendor':form_vendor,
-                    'record_vendors':record_vendors}
-                )
+                return render(request, 'myapp/get_records.html', {'filter': claim_filter})
             return post_record(request, record)
         else:
             form_claim = ClaimForm(request.POST)
