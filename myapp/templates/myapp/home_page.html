@@ -4,6 +4,17 @@
 <title>CSS Template</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript">
+
+function disclaimer_check() {
+  var checkbox = document.getElementById("checkbox");
+    if (checkbox.checked != true) {
+      alert ("Please agree with the disclaimer");
+      window.location.reload(false);
+    }
+}
+
+</script>
 <style>
 * {
   box-sizing: border-box;
@@ -15,19 +26,17 @@ body {
 
 /* Style the header */
 header {
-  background-color: #666;
+  display:inline;
+  background-color: white;
   padding: 30px;
-  text-align: center;
   font-size: 35px;
-  color: white;
+  color: grey;
 }
 
 /* Create two columns/boxes that floats next to each other */
 nav {
   float: left;
-  width: 30%;
-  height: 300px; /* only for demonstration, should be removed */
-  background: #ccc;
+  width: 22%;
   padding: 20px;
 }
 
@@ -42,7 +51,6 @@ article {
   padding: 20px;
   width: 70%;
   background-color: #f1f1f1;
-  height: 300px; /* only for demonstration, should be removed */
 }
 
 /* Clear floats after the columns */
@@ -54,10 +62,9 @@ section:after {
 
 /* Style the footer */
 footer {
-  background-color: #777;
   padding: 10px;
   text-align: center;
-  color: white;
+  color: grey;
 }
 
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
@@ -71,32 +78,48 @@ footer {
 </head>
 <body>
 
-<h2>CSS Layout Float</h2>
-<p>In this example, we have created a header, two columns/boxes and a footer. On smaller screens, the columns will stack on top of each other.</p>
-<p>Resize the browser window to see the responsive effect (you will learn more about this in our next chapter - HTML Responsive.)</p>
-
 <header>
-  <h2>Cities</h2>
+  <table>
+    <tr>
+      <td><img src="http://livelink/ecm/nodes/673718380/suncor-logo.jpg" style="max-width:90%; max-height:90%;"></td>
+      <td><h2>SCM Claims Management</h2></td>
+    </tr>
+  </table>
 </header>
 
 <section>
   <nav>
     <ul>
-      <li><a href="#">London</a></li>
-      <li><a href="#">Paris</a></li>
-      <li><a href="#">Tokyo</a></li>
+      <li><a onclick="disclaimer_check()" href="https://claims-board.azurewebsites.net/enter_new/">Enter New Record</a></li>
+      <li><a onclick="disclaimer_check()" href="https://claims-board.azurewebsites.net/modify/">Modify Record</a></li>
+      <li><a onclick="disclaimer_check()" href="https://claims-board.azurewebsites.net/coming_soon/">Stats</a></li>
+      <li><a onclick="disclaimer_check()" href="https://claims-board.azurewebsites.net/coming_soon/">Dashboard</a></li>
     </ul>
   </nav>
 
   <article>
-    <h1>London</h1>
-    <p>London is the capital city of England. It is the most populous city in the  United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>
-    <p>Standing on the River Thames, London has been a major settlement for two millennia, its history going back to its founding by the Romans, who named it Londinium.</p>
+    <h1>Disclaimer</h1>
+    <p align="justify">The information contained in this Claims
+      Management website is Privileged and Confidential information for the purposes
+      of providing legal advice and gathered in contemplation of litigation.
+    </p>
+    <p align="justify">Theinformation contained within this website is to be accessed only by
+      specifically designated Suncor personnel. By accessing this information, you
+      agree that you shall protect the confidentiality of this information and that
+      you shall NOT cause the information to be removed from this website by any
+      means, including but not limited to removal through export, copying,
+      transcription, transfer or other method, without the express written permission
+      of Suncor Legal Affairs.
+    </p>
+    <form>
+      <input type="checkbox" id="checkbox" name="agree">I agree
+    </form>
   </article>
+
 </section>
 
 <footer>
-  <p>Footer</p>
+  <p>SCM Analytics & Benchmarking</p>
 </footer>
 
 </body>
