@@ -7,16 +7,23 @@
 <script type="text/javascript">
 
 function disclaimer_check() {
-  var checkbox = document.getElementById("checkbox");
-    if (checkbox.checked != true) {
-      alert ("Please agree with the disclaimer");
-      for (var i = 0; i < document.getElementsByClassName("ignore-click").length; i++) {
-            document.getElementsByClassName("ignore-click")[i].addEventListener('click', function (event) {
-                event.preventDefault();
-                return false;
-            });
-    }
-  }
+		var cb = document.getElementById("checkbox");
+		var h1 = document.getElementById("hypl1");
+    var h2 = document.getElementById("hypl2");
+    var h3 = document.getElementById("hypl3");
+    var h4 = document.getElementById("hypl4");
+		if (cb.checked != true) {
+			alert ("Please agree with the disclaimer");
+			h1.href = "https://claims-board.azurewebsites.net/";
+      h2.href = "https://claims-board.azurewebsites.net/";
+      h3.href = "https://claims-board.azurewebsites.net/";
+      h4.href = "https://claims-board.azurewebsites.net/";
+		} else {
+			hl.href = "https://claims-board.azurewebsites.net/enter_new/";
+      h2.href = "https://claims-board.azurewebsites.net/modify/";
+      h3.href = "https://claims-board.azurewebsites.net/coming_soon/";
+      h4.href = "https://claims-board.azurewebsites.net/coming_soon/";
+		}
 }
 
 </script>
@@ -95,10 +102,10 @@ footer {
 <section>
   <nav>
     <ul>
-      <li><a onclick="disclaimer_check()" class="ignore-click" href="https://claims-board.azurewebsites.net/enter_new/">Enter New Record</a></li>
-      <li><a onclick="disclaimer_check()" class="ignore-click" href="https://claims-board.azurewebsites.net/modify/">Modify Record</a></li>
-      <li><a onclick="disclaimer_check()" class="ignore-click" href="https://claims-board.azurewebsites.net/coming_soon/">Stats</a></li>
-      <li><a onclick="disclaimer_check()" class="ignore-click" href="https://claims-board.azurewebsites.net/coming_soon/">Dashboard</a></li>
+      <li><a onclick="disclaimer_check()" id="hypl1" href="https://claims-board.azurewebsites.net/enter_new/">Enter New Record</a></li>
+      <li><a onclick="disclaimer_check()" id="hypl2" href="https://claims-board.azurewebsites.net/modify/">Modify Record</a></li>
+      <li><a onclick="disclaimer_check()" id="hypl3" href="https://claims-board.azurewebsites.net/coming_soon/">Stats</a></li>
+      <li><a onclick="disclaimer_check()" id="hypl4" href="https://claims-board.azurewebsites.net/coming_soon/">Dashboard</a></li>
     </ul>
   </nav>
 
