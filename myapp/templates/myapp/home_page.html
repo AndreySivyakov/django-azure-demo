@@ -10,8 +10,13 @@ function disclaimer_check() {
   var checkbox = document.getElementById("checkbox");
     if (checkbox.checked != true) {
       alert ("Please agree with the disclaimer");
-      window.location.reload(false);
+      for (var i = 0; i < document.getElementsByClassName("ignore-click").length; i++) {
+            document.getElementsByClassName("ignore-click")[i].addEventListener('click', function (event) {
+                event.preventDefault();
+                return false;
+            });
     }
+  }
 }
 
 </script>
@@ -90,10 +95,10 @@ footer {
 <section>
   <nav>
     <ul>
-      <li><a onclick="disclaimer_check()" href="https://claims-board.azurewebsites.net/enter_new/">Enter New Record</a></li>
-      <li><a onclick="disclaimer_check()" href="https://claims-board.azurewebsites.net/modify/">Modify Record</a></li>
-      <li><a onclick="disclaimer_check()" href="https://claims-board.azurewebsites.net/coming_soon/">Stats</a></li>
-      <li><a onclick="disclaimer_check()" href="https://claims-board.azurewebsites.net/coming_soon/">Dashboard</a></li>
+      <li><a onclick="disclaimer_check()" name="ignore-click" href="https://claims-board.azurewebsites.net/enter_new/">Enter New Record</a></li>
+      <li><a onclick="disclaimer_check()" name="ignore-click" href="https://claims-board.azurewebsites.net/modify/">Modify Record</a></li>
+      <li><a onclick="disclaimer_check()" name="ignore-click" href="https://claims-board.azurewebsites.net/coming_soon/">Stats</a></li>
+      <li><a onclick="disclaimer_check()" name="ignore-click" href="https://claims-board.azurewebsites.net/coming_soon/">Dashboard</a></li>
     </ul>
   </nav>
 
