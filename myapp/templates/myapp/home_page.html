@@ -12,12 +12,14 @@ function disclaimer_check() {
     var h2 = document.getElementById("hypl2");
     var h3 = document.getElementById("hypl3");
     var h4 = document.getElementById("hypl4");
+		var agree = document.getElementById("agree");
 		if (cb.checked != true) {
 			alert ("Please agree with the disclaimer");
 			h1.href = "https://claims-board.azurewebsites.net/";
       h2.href = "https://claims-board.azurewebsites.net/";
       h3.href = "https://claims-board.azurewebsites.net/";
       h4.href = "https://claims-board.azurewebsites.net/";
+			agree.style.color = "red";
 		} else {
 			hl.href = "https://claims-board.azurewebsites.net/enter_new/";
       h2.href = "https://claims-board.azurewebsites.net/modify/";
@@ -115,7 +117,7 @@ footer {
       Management website is Privileged and Confidential information for the purposes
       of providing legal advice and gathered in contemplation of litigation.
     </p>
-    <p align="justify">Theinformation contained within this website is to be accessed only by
+    <p align="justify">The information contained within this website is to be accessed only by
       specifically designated Suncor personnel. By accessing this information, you
       agree that you shall protect the confidentiality of this information and that
       you shall NOT cause the information to be removed from this website by any
@@ -124,7 +126,7 @@ footer {
       of Suncor Legal Affairs.
     </p>
     <form>
-      <input type="checkbox" id="checkbox" name="agree">I agree
+      <input type="checkbox" id="checkbox" name="agree"><div id="agree" style="display:inline;">I agree</div>
     </form>
   </article>
 
