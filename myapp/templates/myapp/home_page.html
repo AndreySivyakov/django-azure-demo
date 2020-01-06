@@ -12,14 +12,14 @@ function disclaimer_check() {
     var h2 = document.getElementById("hypl2");
     var h3 = document.getElementById("hypl3");
     var h4 = document.getElementById("hypl4");
-		var agree = document.getElementById("agree");
+		var hidText = document.getElementById("hidden_text");
 		if (cb.checked != true) {
 			alert ("Please agree with the disclaimer");
 			h1.href = "https://claims-board.azurewebsites.net/";
       h2.href = "https://claims-board.azurewebsites.net/";
       h3.href = "https://claims-board.azurewebsites.net/";
       h4.href = "https://claims-board.azurewebsites.net/";
-			agree.style.color = "red";
+			hidText.style.visibility = "visible";
 		} else {
 			hl.href = "https://claims-board.azurewebsites.net/enter_new/";
       h2.href = "https://claims-board.azurewebsites.net/modify/";
@@ -126,7 +126,9 @@ footer {
       of Suncor Legal Affairs.
     </p>
     <form>
-      <input type="checkbox" id="checkbox" name="agree"><div id="agree" style="display:inline;">I agree</div>
+      <input type="checkbox" id="checkbox" name="agree">
+			<div style="display:inline;">I agree</div>
+			<div id="hidden_text" style="display:inline; visibility:hidden; color:red;">Please agree with the disclaimer</div>
     </form>
   </article>
 
