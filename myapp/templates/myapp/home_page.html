@@ -21,10 +21,14 @@ function disclaimer_check() {
       //h4.href = "https://claims-board.azurewebsites.net/";
 			hidText.style.visibility = "visible";
 		} else {
-			hl.href = "https://claims-board.azurewebsites.net/enter_new/";
-      h2.href = "https://claims-board.azurewebsites.net/modify/";
-      h3.href = "https://claims-board.azurewebsites.net/coming_soon/";
-      h4.href = "https://claims-board.azurewebsites.net/coming_soon/";
+			//hl.href = "https://claims-board.azurewebsites.net/enter_new/";
+      //h2.href = "https://claims-board.azurewebsites.net/modify/";
+      //h3.href = "https://claims-board.azurewebsites.net/coming_soon/";
+      //h4.href = "https://claims-board.azurewebsites.net/coming_soon/";
+			h1.style.pointerEvents = "auto";
+			h2.style.pointerEvents = "auto";
+			h3.style.pointerEvents = "auto";
+			h4.style.pointerEvents = "auto";
 		}
 }
 
@@ -104,10 +108,10 @@ footer {
 <section>
   <nav>
     <ul>
-      <li><a onclick="disclaimer_check()" id="hypl1" href="">Enter New Record</a></li>
-      <li><a onclick="disclaimer_check()" id="hypl2" href="">Modify Record</a></li>
-      <li><a onclick="disclaimer_check()" id="hypl3" href="">Stats</a></li>
-      <li><a onclick="disclaimer_check()" id="hypl4" href="">Dashboard</a></li>
+      <li><a style="pointer-events: none;" onclick="disclaimer_check()" id="hypl1" href="https://claims-board.azurewebsites.net/enter_new/">Enter New Record</a></li>
+      <li><a style="pointer-events: none;" onclick="disclaimer_check()" id="hypl2" href="https://claims-board.azurewebsites.net/modify/">Modify Record</a></li>
+      <li><a style="pointer-events: none;" onclick="disclaimer_check()" id="hypl3" href="https://claims-board.azurewebsites.net/coming_soon/">Stats</a></li>
+      <li><a style="pointer-events: none;" onclick="disclaimer_check()" id="hypl4" href="https://claims-board.azurewebsites.net/coming_soon/">Dashboard</a></li>
     </ul>
   </nav>
 
