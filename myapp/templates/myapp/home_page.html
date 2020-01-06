@@ -15,13 +15,12 @@ function disclaimer_check() {
 		var hidText = document.getElementById("hidden_text");
 		if (cb.checked != true) {
 			//alert ("Please agree with the disclaimer");
-			h1.href = "https://claims-board.azurewebsites.net/";
-      h2.href = "https://claims-board.azurewebsites.net/";
-      h3.href = "https://claims-board.azurewebsites.net/";
-      h4.href = "https://claims-board.azurewebsites.net/";
-			hidText.style.visibility = "visible";
+			//h1.href = "https://claims-board.azurewebsites.net/";
+      //h2.href = "https://claims-board.azurewebsites.net/";
+      //h3.href = "https://claims-board.azurewebsites.net/";
+      //h4.href = "https://claims-board.azurewebsites.net/";
+			//hidText.style.visibility = "visible";
 			alert (hidText.style.visibility);
-			alert("got here");
 		} else {
 			hl.href = "https://claims-board.azurewebsites.net/enter_new/";
       h2.href = "https://claims-board.azurewebsites.net/modify/";
@@ -106,10 +105,10 @@ footer {
 <section>
   <nav>
     <ul>
-      <li><a onclick="disclaimer_check()" id="hypl1" href="https://claims-board.azurewebsites.net/enter_new/">Enter New Record</a></li>
-      <li><a onclick="disclaimer_check()" id="hypl2" href="https://claims-board.azurewebsites.net/modify/">Modify Record</a></li>
-      <li><a onclick="disclaimer_check()" id="hypl3" href="https://claims-board.azurewebsites.net/coming_soon/">Stats</a></li>
-      <li><a onclick="disclaimer_check()" id="hypl4" href="https://claims-board.azurewebsites.net/coming_soon/">Dashboard</a></li>
+      <li><a onclick="disclaimer_check()" id="hypl1" href="">Enter New Record</a></li>
+      <li><a onclick="disclaimer_check()" id="hypl2" href="">Modify Record</a></li>
+      <li><a onclick="disclaimer_check()" id="hypl3" href="">Stats</a></li>
+      <li><a onclick="disclaimer_check()" id="hypl4" href="">Dashboard</a></li>
     </ul>
   </nav>
 
