@@ -6,15 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript">
 
+var hidText = document.getElementById("hidden_text");
+
 function disclaimer_check() {
 		var cb = document.getElementById("checkbox");
 		var h1 = document.getElementById("hypl1");
     var h2 = document.getElementById("hypl2");
     var h3 = document.getElementById("hypl3");
     var h4 = document.getElementById("hypl4");
-		var hidText = document.getElementById("hidden_text");
 		if (cb.checked != true) {
-			alert ("Please agree with the disclaimer");
+			//alert ("Please agree with the disclaimer");
 			h1.href = "https://claims-board.azurewebsites.net/";
       h2.href = "https://claims-board.azurewebsites.net/";
       h3.href = "https://claims-board.azurewebsites.net/";
