@@ -6,7 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript">
 
-document.getElementById("hypl1").addEventListener("click", disclaimer_check);
+var el1 = document.getElementById("hypl1");
+if(el1){
+	el1.addEventListener("click", disclaimer_check);
+}
 
 function disclaimer_check() {
 		var cb = document.getElementById("checkbox");
