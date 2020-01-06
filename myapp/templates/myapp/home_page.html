@@ -4,41 +4,14 @@
 <title>CSS Template</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script type="text/javascript">
-
-var el1 = document.getElementById("hypl1");
-if(el1){
-	el1.addEventListener("click", disclaimer_check);
-}
-
-function disclaimer_check() {
-		var cb = document.getElementById("checkbox");
-		var h1 = document.getElementById("hypl1");
-    var h2 = document.getElementById("hypl2");
-    var h3 = document.getElementById("hypl3");
-    var h4 = document.getElementById("hypl4");
-		var hidText = document.getElementById("hidden_text");
-		if (cb.checked != true) {
-			//alert ("Please agree with the disclaimer");
-			//h1.href = "https://claims-board.azurewebsites.net/";
-      //h2.href = "https://claims-board.azurewebsites.net/";
-      //h3.href = "https://claims-board.azurewebsites.net/";
-      //h4.href = "https://claims-board.azurewebsites.net/";
-			hidText.style.visibility = "visible";
-		} else {
-			//hl.href = "https://claims-board.azurewebsites.net/enter_new/";
-      //h2.href = "https://claims-board.azurewebsites.net/modify/";
-      //h3.href = "https://claims-board.azurewebsites.net/coming_soon/";
-      //h4.href = "https://claims-board.azurewebsites.net/coming_soon/";
-			h1.style.pointerEvents = "auto";
-			h2.style.pointerEvents = "auto";
-			h3.style.pointerEvents = "auto";
-			h4.style.pointerEvents = "auto";
-		}
-}
-
-</script>
 <style>
+
+span {
+		cursor:pointer;
+		color:blue;
+		text-decoration:underline;
+		}
+
 * {
   box-sizing: border-box;
 }
@@ -98,8 +71,18 @@ footer {
   }
 }
 </style>
+
+<script>
+	function reset_link() {
+		document.getElementById("hypl1").removeAttribute("href");
+		document.getElementById("hypl2").removeAttribute("href");
+		document.getElementById("hypl3").removeAttribute("href");
+		document.getElementById("hypl4").removeAttribute("href");
+	}
+</script>
+
 </head>
-<body>
+<body id="mybody" onload="reset_link()">
 
 <header>
   <table>
@@ -113,10 +96,12 @@ footer {
 <section>
   <nav>
     <ul>
-      <li><a style="pointer-events: none;" id="hypl1" href="https://claims-board.azurewebsites.net/enter_new/">Enter New Record</a></li>
-      <li><a style="pointer-events: none;" id="hypl2" href="https://claims-board.azurewebsites.net/modify/">Modify Record</a></li>
-      <li><a style="pointer-events: none;" id="hypl3" href="https://claims-board.azurewebsites.net/coming_soon/">Stats</a></li>
-      <li><a style="pointer-events: none;" id="hypl4" href="https://claims-board.azurewebsites.net/coming_soon/">Dashboard</a></li>
+			<span>
+	      <li><a id="hypl1">Enter New Record</a></li>
+	      <li><a id="hypl2">Modify Record</a></li>
+	      <li><a id="hypl3">Stats</a></li>
+	      <li><a id="hypl4">Dashboard</a></li>
+			</span>
     </ul>
   </nav>
 
@@ -148,4 +133,56 @@ footer {
 </footer>
 
 </body>
+
+<script type="text/javascript">
+
+	document.getElementById("mybody").addEventListener("mouseover", function(){
+		if(document.getElementById("checkbox").checked === true) {
+			document.getElementById("hypl1").style.cursor = "pointer";
+			document.getElementById("hypl1").href="https://claims-board.azurewebsites.net/enter_new/";
+			document.getElementById("hypl2").style.cursor = "pointer";
+			document.getElementById("hypl2").href="https://claims-board.azurewebsites.net/modify/";
+			document.getElementById("hypl3").style.cursor = "pointer";
+			document.getElementById("hypl3").href="https://claims-board.azurewebsites.net/coming_soon/";
+			document.getElementById("hypl4").style.cursor = "pointer";
+			document.getElementById("hypl4").href="https://claims-board.azurewebsites.net/coming_soon/";
+		} else {
+			document.getElementById("hypl1").style.cursor = "not-allowed";
+			document.getElementById("hypl1").removeAttribute("href");
+			document.getElementById("hypl2").style.cursor = "not-allowed";
+			document.getElementById("hypl2").removeAttribute("href");
+			document.getElementById("hypl3").style.cursor = "not-allowed";
+			document.getElementById("hypl3").removeAttribute("href");
+			document.getElementById("hypl4").style.cursor = "not-allowed";
+			document.getElementById("hypl4").removeAttribute("href");
+		}
+	});
+
+	document.getElementById("hypl1").addEventListener("click", function() {
+		if(document.getElementById("checkbox").checked != true) {
+			document.getElementById("hidden_text").style.visibility = "visible"
+		}
+	});
+
+	document.getElementById("hypl2").addEventListener("click", function() {
+		if(document.getElementById("checkbox").checked != true) {
+			document.getElementById("hidden_text").style.visibility = "visible"
+		}
+	});
+
+	document.getElementById("hypl3").addEventListener("click", function() {
+		if(document.getElementById("checkbox").checked != true) {
+			document.getElementById("hidden_text").style.visibility = "visible"
+		}
+	});
+
+	document.getElementById("hypl4").addEventListener("click", function() {
+		if(document.getElementById("checkbox").checked != true) {
+			document.getElementById("hidden_text").style.visibility = "visible"
+		}
+	});
+
+</script>
+
+
 </html>
