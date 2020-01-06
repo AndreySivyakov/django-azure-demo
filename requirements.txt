@@ -7,3 +7,4 @@ django-widget_tweaks
 django-filter
 django-pyodbc-azure
 whitenoise
+bokeh

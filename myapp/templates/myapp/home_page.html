@@ -6,6 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript">
 
+document.getElementById("hypl1").addEventListener("click", disclaimer_check);
+
 function disclaimer_check() {
 		var cb = document.getElementById("checkbox");
 		var h1 = document.getElementById("hypl1");
@@ -108,10 +110,10 @@ footer {
 <section>
   <nav>
     <ul>
-      <li><a style="pointer-events: none;" onclick="disclaimer_check()" id="hypl1" href="https://claims-board.azurewebsites.net/enter_new/">Enter New Record</a></li>
-      <li><a style="pointer-events: none;" onclick="disclaimer_check()" id="hypl2" href="https://claims-board.azurewebsites.net/modify/">Modify Record</a></li>
-      <li><a style="pointer-events: none;" onclick="disclaimer_check()" id="hypl3" href="https://claims-board.azurewebsites.net/coming_soon/">Stats</a></li>
-      <li><a style="pointer-events: none;" onclick="disclaimer_check()" id="hypl4" href="https://claims-board.azurewebsites.net/coming_soon/">Dashboard</a></li>
+      <li><a style="pointer-events: none;" id="hypl1" href="https://claims-board.azurewebsites.net/enter_new/">Enter New Record</a></li>
+      <li><a style="pointer-events: none;" id="hypl2" href="https://claims-board.azurewebsites.net/modify/">Modify Record</a></li>
+      <li><a style="pointer-events: none;" id="hypl3" href="https://claims-board.azurewebsites.net/coming_soon/">Stats</a></li>
+      <li><a style="pointer-events: none;" id="hypl4" href="https://claims-board.azurewebsites.net/coming_soon/">Dashboard</a></li>
     </ul>
   </nav>
 
