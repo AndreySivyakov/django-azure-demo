@@ -73,12 +73,13 @@ footer {
 </style>
 
 <script>
+
 	function reset_link() {
-		document.getElementById("hypl1").removeAttribute("href");
-		document.getElementById("hypl2").removeAttribute("href");
-		document.getElementById("hypl3").removeAttribute("href");
-		document.getElementById("hypl4").removeAttribute("href");
+		for (i=1; i<5; i++) {
+			document.getElementById("hypl" + i).removeAttribute("href");
+		}
 	}
+	
 </script>
 
 </head>
