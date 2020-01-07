@@ -79,111 +79,89 @@ footer {
 			document.getElementById("hypl" + i).removeAttribute("href");
 		}
 	}
-	
+
 </script>
 
 </head>
 <body id="mybody" onload="reset_link()">
 
-<header>
-  <table>
-    <tr>
-      <td><img src="http://livelink/ecm/nodes/673718380/suncor-logo.jpg" style="max-width:90%; max-height:90%;"></td>
-      <td><h2>SCM Claims Management</h2></td>
-    </tr>
-  </table>
-</header>
+	<header>
+	  <table>
+	    <tr>
+	      <td><img src="http://livelink/ecm/nodes/673718380/suncor-logo.jpg" style="max-width:90%; max-height:90%;"></td>
+	      <td><h2>SCM Claims Management</h2></td>
+	    </tr>
+	  </table>
+	</header>
 
-<section>
-  <nav>
-    <ul>
-			<span>
-	      <li><a id="hypl1">Enter New Record</a></li>
-	      <li><a id="hypl2">Modify Record</a></li>
-	      <li><a id="hypl3">Stats</a></li>
-	      <li><a id="hypl4">Dashboard</a></li>
-			</span>
-    </ul>
-  </nav>
+	<section>
+	  <nav>
+	    <ul>
+				<span>
+		      <li><a id="hypl1">Enter New Record</a></li>
+		      <li><a id="hypl2">Modify Record</a></li>
+		      <li><a id="hypl3">Stats</a></li>
+		      <li><a id="hypl4">Dashboard</a></li>
+				</span>
+	    </ul>
+	  </nav>
 
-  <article>
-    <h1>Disclaimer</h1>
-    <p align="justify">The information contained in this Claims
-      Management website is Privileged and Confidential information for the purposes
-      of providing legal advice and gathered in contemplation of litigation.
-    </p>
-    <p align="justify">The information contained within this website is to be accessed only by
-      specifically designated Suncor personnel. By accessing this information, you
-      agree that you shall protect the confidentiality of this information and that
-      you shall NOT cause the information to be removed from this website by any
-      means, including but not limited to removal through export, copying,
-      transcription, transfer or other method, without the express written permission
-      of Suncor Legal Affairs.
-    </p>
-    <form>
-      <input type="checkbox" id="checkbox" name="agree">
-			<div style="display:inline;">I agree</div>
-			<div id="hidden_text" style="display:inline; visibility:hidden; color:red;">Please agree with the disclaimer</div>
-    </form>
-  </article>
+	  <article>
+	    <h1>Disclaimer</h1>
+	    <p align="justify">The information contained in this Claims
+	      Management website is Privileged and Confidential information for the purposes
+	      of providing legal advice and gathered in contemplation of litigation.
+	    </p>
+	    <p align="justify">The information contained within this website is to be accessed only by
+	      specifically designated Suncor personnel. By accessing this information, you
+	      agree that you shall protect the confidentiality of this information and that
+	      you shall NOT cause the information to be removed from this website by any
+	      means, including but not limited to removal through export, copying,
+	      transcription, transfer or other method, without the express written permission
+	      of Suncor Legal Affairs.
+	    </p>
+	    <form>
+	      <input type="checkbox" id="checkbox" name="agree">
+				<div style="display:inline;">I agree</div>
+				<div id="hidden_text" style="display:inline; visibility:hidden; color:red;">Please agree with the disclaimer</div>
+	    </form>
+	  </article>
 
-</section>
+	</section>
 
-<footer>
-  <p>SCM Analytics & Benchmarking</p>
-</footer>
+	<footer>
+	  <p>SCM Analytics & Benchmarking</p>
+	</footer>
 
 </body>
 
-<script type="text/javascript">
+	<script type="text/javascript">
 
-	document.getElementById("mybody").addEventListener("mouseover", function(){
-		if(document.getElementById("checkbox").checked === true) {
-			document.getElementById("hypl1").style.cursor = "pointer";
-			document.getElementById("hypl1").href="https://claims-board.azurewebsites.net/enter_new/";
-			document.getElementById("hypl2").style.cursor = "pointer";
-			document.getElementById("hypl2").href="https://claims-board.azurewebsites.net/modify/";
-			document.getElementById("hypl3").style.cursor = "pointer";
-			document.getElementById("hypl3").href="https://claims-board.azurewebsites.net/coming_soon/";
-			document.getElementById("hypl4").style.cursor = "pointer";
-			document.getElementById("hypl4").href="https://claims-board.azurewebsites.net/coming_soon/";
-		} else {
-			document.getElementById("hypl1").style.cursor = "not-allowed";
-			document.getElementById("hypl1").removeAttribute("href");
-			document.getElementById("hypl2").style.cursor = "not-allowed";
-			document.getElementById("hypl2").removeAttribute("href");
-			document.getElementById("hypl3").style.cursor = "not-allowed";
-			document.getElementById("hypl3").removeAttribute("href");
-			document.getElementById("hypl4").style.cursor = "not-allowed";
-			document.getElementById("hypl4").removeAttribute("href");
+		document.getElementById("mybody").addEventListener("mouseover", function(){
+			if(document.getElementById("checkbox").checked === true) {
+				for (i=1; i<5; i++) {
+					document.getElementById("hypl" + i).style.cursor = "pointer";
+				}
+				document.getElementById("hypl1").href="https://claims-board.azurewebsites.net/enter_new/";
+				document.getElementById("hypl2").href="https://claims-board.azurewebsites.net/modify/";
+				document.getElementById("hypl3").href="https://claims-board.azurewebsites.net/coming_soon/";
+				document.getElementById("hypl4").href="https://claims-board.azurewebsites.net/coming_soon/";
+			} else {
+				for (i=1; i<5; i++) {
+					document.getElementById("hypl" + i).style.cursor = "not-allowed";
+					document.getElementById("hypl" + i).removeAttribute("href");
+				}
+			}
+		});
+
+		for (i=1; i<5; i++) {
+			document.getElementById("hypl" + i).addEventListener("click", function() {
+				if(document.getElementById("checkbox").checked != true) {
+					document.getElementById("hidden_text").style.visibility = "visible"
+				}
+			});
 		}
-	});
 
-	document.getElementById("hypl1").addEventListener("click", function() {
-		if(document.getElementById("checkbox").checked != true) {
-			document.getElementById("hidden_text").style.visibility = "visible"
-		}
-	});
-
-	document.getElementById("hypl2").addEventListener("click", function() {
-		if(document.getElementById("checkbox").checked != true) {
-			document.getElementById("hidden_text").style.visibility = "visible"
-		}
-	});
-
-	document.getElementById("hypl3").addEventListener("click", function() {
-		if(document.getElementById("checkbox").checked != true) {
-			document.getElementById("hidden_text").style.visibility = "visible"
-		}
-	});
-
-	document.getElementById("hypl4").addEventListener("click", function() {
-		if(document.getElementById("checkbox").checked != true) {
-			document.getElementById("hidden_text").style.visibility = "visible"
-		}
-	});
-
-</script>
-
+	</script>
 
 </html>
