@@ -1,4 +1,4 @@
-django==2.1.15
+django==2.2.13
 django-crispy-forms
 django-bootstrap4
 django-jquery
